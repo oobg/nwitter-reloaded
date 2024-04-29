@@ -4,6 +4,7 @@ import {FirebaseError} from "firebase/app"
 import {auth} from "../firebase.ts";
 import {signInWithEmailAndPassword} from "firebase/auth";
 import {Wrapper, Title, Form, Input, Error, Switcher} from "../components/auth-components.tsx";
+import GithubButton from "../components/github-button.tsx";
 
 export default function Login() {
     const navigate = useNavigate();
@@ -38,7 +39,7 @@ export default function Login() {
     };
     return (
         <Wrapper>
-            <Title>Login into X</Title>
+            <Title>Log into X</Title>
             <Form onSubmit={onSubmit}>
                 <Input onChange={onChange} name="email" value={email} placeholder="Email" type="email" required />
                 <Input onChange={onChange} name="password" value={password} placeholder="Password" type="password" required />
@@ -48,6 +49,7 @@ export default function Login() {
             <Switcher>
                 Don't have an account? <Link to="/create-account">Create one &rarr;</Link>
             </Switcher>
+            <GithubButton />
         </Wrapper>
     )
 }
