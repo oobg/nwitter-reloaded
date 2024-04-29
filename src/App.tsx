@@ -4,7 +4,7 @@ import Home from "./routes/home";
 import Profile from "./routes/profile";
 import Login from "./routes/login.tsx";
 import CreateAccount from "./routes/create-account.tsx";
-import {createGlobalStyle} from "styled-components";
+import {createGlobalStyle, styled} from "styled-components";
 import reset from "styled-reset";
 import {useEffect, useState} from "react";
 import LoadingScreen from "./components/loading-screen.tsx";
@@ -47,6 +47,13 @@ const GlobalStyles = createGlobalStyle`
     }
 `;
 
+const Wrapper = styled.div`
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
 function App() {
   const [isLoading, setLoading] = useState(true);
   const init = async () => {
@@ -57,10 +64,10 @@ function App() {
     init();
   }, []);
   return (
-      <>
+      <Wrapper>
         <GlobalStyles />
         {isLoading ? <LoadingScreen /> : <RouterProvider router={router} />}
-      </>
+      </Wrapper>
   );
 }
 
